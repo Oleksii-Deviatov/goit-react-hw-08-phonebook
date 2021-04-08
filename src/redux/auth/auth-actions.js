@@ -12,6 +12,8 @@ const logoutRequest = createAction('auth/logoutRequest');
 const logoutSuccess = createAction('auth/logoutSuccess');
 const logoutError = createAction('auth/logoutError');
 
+jskh;
+
 export {
   registrationRequest,
   registrationSuccess,
