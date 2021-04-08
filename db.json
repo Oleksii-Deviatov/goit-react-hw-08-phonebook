@@ -1,6 +1,16 @@
 {
   "contacts": [
     {
+      "id": "dLqjlYQ",
+      "name": "Rosie Simpson",
+      "number": "459-12-56"
+    },
+    {
+      "id": "Bks7ro2",
+      "name": "Hermione Kline",
+      "number": "443-89-12"
+    },
+    {
       "id": "9W5Owh8",
       "name": "Eden Clements",
       "number": "645-17-79"
@@ -11,14 +21,9 @@
       "number": "227-91-26"
     },
     {
-      "name": "йцу",
-      "number": "цуйцуй",
-      "id": "Okik-CN"
-    },
-    {
-      "name": "кйукуц",
-      "number": "выафвы",
-      "id": "AgqkUlx"
+      "name": "qwe",
+      "number": "111",
+      "id": "sZYa2Ud"
     }
   ]
 }
