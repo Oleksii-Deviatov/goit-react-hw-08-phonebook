@@ -49,14 +49,15 @@ function ContactForm({ contacts, addContact }) {
     <form onSubmit={submitHendler} autoComplete="off">
       <Box display="flex" flexDirection="column">
         <TextField
-          id="standard-basic"
+          // id="standard-basic"
           label="Name"
           value={inputName}
           onChange={inputNameHandler}
           margin="dense"
+          required
         />
         <TextField
-          id="standard-basic"
+          // id="standard-basic"
           label="Number"
           value={inputNumber}
           onChange={inputNumberHendler}

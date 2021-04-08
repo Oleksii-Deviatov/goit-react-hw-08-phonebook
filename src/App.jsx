@@ -6,8 +6,18 @@ import { connect } from 'react-redux';
 import * as operations from './redux/contacts/contacts-operations';
 import { useEffect } from 'react';
 import { getLoading } from './redux/contacts/contacts-selectors';
-import Loader from 'react-loader-spinner';
-import styles from './styles.module.css';
+import Spinner from './components/RegisterPage';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import NavBar from './components/NavigationBar';
+import { React, lazy, Suspense } from 'react';
+
+const RegisterPage = lazy(() =>
+  import('./components/RegisterPage' /* webpackChunkName: "RegisterPage" */),
+);
+
+const LoginPage = lazy(() =>
+  import('./components/LoginPage' /* webpackChunkName: "LoginPage" */),
+);
 
 function App({ fetchContacts, getLoading }) {
   useEffect(() => {
@@ -16,31 +26,33 @@ function App({ fetchContacts, getLoading }) {
 
   return (
     <>
-      <Container maxWidth="xs">
-        <Typography variant="h2" align="center">
-          Phonebook
-        </Typography>
+      <Suspense fallback={<Spinner />}>
+        <Container maxWidth="xs">
+          <NavBar></NavBar>
 
-        {getLoading && (
-          <Loader
-            className={styles.loader}
-            type="Puff"
-            color="#00BFFF"
-            height={100}
-            width={100}
-          />
-        )}
+          <Switch>
+            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Redirect to="/" />
+          </Switch>
 
-        <ContactForm />
+          <Typography variant="h2" align="center">
+            Phonebook
+          </Typography>
 
-        <Typography variant="h4" align="center">
-          Contacts
-        </Typography>
+          {getLoading && <Spinner />}
 
-        <Filter />
+          <ContactForm />
 
-        <ContactList />
-      </Container>
+          <Typography variant="h4" align="center">
+            Contacts
+          </Typography>
+
+          <Filter />
+
+          <ContactList />
+        </Container>
+      </Suspense>
     </>
   );
 }
