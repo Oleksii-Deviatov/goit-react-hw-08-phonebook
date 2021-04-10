@@ -1,5 +1,6 @@
-.spinner {
-  top: 0px;
+.loader {
+  position: absolute;
+  top: 14%;
   left: 50%;
   transform: translateX(-50%);
 }

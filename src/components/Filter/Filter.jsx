@@ -1,9 +1,7 @@
-import React from 'react';
-import { TextField, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/contacts/contacts-actions';
-
+import { TextField, Box } from '@material-ui/core';
 import { getFilter } from '../../redux/contacts/contacts-selectors';
+import * as actions from '../../redux/contacts/contacts-actions';
 
 function Filter({ onChange, value }) {
   function inputFilterHendler({ target: { value } }) {

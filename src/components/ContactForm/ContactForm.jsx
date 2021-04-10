@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextField, Button, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { getAllContacts } from '../../redux/contacts/contacts-selectors';
@@ -49,7 +49,6 @@ function ContactForm({ contacts, addContact }) {
     <form onSubmit={submitHendler} autoComplete="off">
       <Box display="flex" flexDirection="column">
         <TextField
-          // id="standard-basic"
           label="Name"
           value={inputName}
           onChange={inputNameHandler}
@@ -57,7 +56,6 @@ function ContactForm({ contacts, addContact }) {
           required
         />
         <TextField
-          // id="standard-basic"
           label="Number"
           value={inputNumber}
           onChange={inputNumberHendler}

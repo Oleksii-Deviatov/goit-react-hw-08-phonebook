@@ -1,15 +1,21 @@
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
-import { Container, Typography } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { connect } from 'react-redux';
-import * as operations from './redux/contacts/contacts-operations';
+import * as authOperations from './redux/auth/auth-operations';
 import { useEffect } from 'react';
-import { getLoading } from './redux/contacts/contacts-selectors';
-import Spinner from './components/RegisterPage';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import NavBar from './components/NavigationBar';
 import { React, lazy, Suspense } from 'react';
+import NavBar from './components/NavigationBar';
+import Title from './components/Title';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+
+const StartPage = lazy(() =>
+  import('./components/StartPage' /* webpackChunkName: "StartPage" */),
+);
+
+const HomePage = lazy(() =>
+  import('./components/Home' /* webpackChunkName: "HomePage" */),
+);
 
 const RegisterPage = lazy(() =>
   import('./components/RegisterPage' /* webpackChunkName: "RegisterPage" */),
@@ -19,52 +25,50 @@ const LoginPage = lazy(() =>
   import('./components/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
 
-function App({ fetchContacts, getLoading }) {
+function App({ onGetCurrentUser }) {
   useEffect(() => {
-    fetchContacts();
+    onGetCurrentUser();
   }, []);
 
   return (
     <>
-      <Suspense fallback={<Spinner />}>
-        <Container maxWidth="xs">
+      <Container maxWidth="xs">
+        <Suspense fallback={null}>
           <NavBar></NavBar>
-
+          <Title title="Phonebook" variant="h2" />
           <Switch>
-            <Route exact path="/register" component={RegisterPage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/" component={StartPage} />
+
+            <PublicRoute
+              path="/register"
+              restricted
+              redirectTo="/home"
+              component={RegisterPage}
+            />
+
+            <PublicRoute
+              path="/login"
+              restricted
+              redirectTo="/home"
+              component={LoginPage}
+            />
+
+            <PrivateRoute
+              path="/home"
+              redirectTo="/login"
+              component={HomePage}
+            />
+
             <Redirect to="/" />
           </Switch>
-
-          <Typography variant="h2" align="center">
-            Phonebook
-          </Typography>
-
-          {getLoading && <Spinner />}
-
-          <ContactForm />
-
-          <Typography variant="h4" align="center">
-            Contacts
-          </Typography>
-
-          <Filter />
-
-          <ContactList />
-        </Container>
-      </Suspense>
+        </Suspense>
+      </Container>
     </>
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchContacts: () => dispatch(operations.fetchContacts()),
-  };
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
 };
 
-const mapStateToProps = state => ({
-  getLoading: getLoading(state),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

@@ -7,7 +7,6 @@ import * as operations from '../../redux/auth/auth-operations';
 function NavigationBar({ isAuthenticated, onLogout }) {
   return (
     <>
-      <NavLink to="/home">Home</NavLink>
       <NavLink to="/register">Register</NavLink>
       <NavLink to="/login">Login</NavLink>
       {isAuthenticated && (

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as actions from './auth-actions';
+import * as authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
@@ -13,42 +13,63 @@ const token = {
 };
 
 const register = credentials => async dispatch => {
-  dispatch(actions.registrationRequest());
+  dispatch(authActions.registrationRequest());
 
   try {
     const response = await axios.post('/users/signup', credentials);
 
     token.set(response.data.token);
-    dispatch(actions.registrationSuccess(response.data));
+    dispatch(authActions.registrationSuccess(response.data));
   } catch (error) {
-    dispatch(actions.registrationError(error.message));
+    dispatch(authActions.registrationError(error.message));
   }
 };
 
 const login = credentials => async dispatch => {
-  dispatch(actions.loginRequest());
+  dispatch(authActions.loginRequest());
 
   try {
     const response = await axios.post('/users/login', credentials);
 
     token.set(response.data.token);
-    dispatch(actions.loginSuccess(response.data));
+    dispatch(authActions.loginSuccess(response.data));
   } catch (error) {
-    dispatch(actions.loginError(error.message));
+    dispatch(authActions.loginError(error.message));
   }
 };
 
 const logout = () => async dispatch => {
-  dispatch(actions.logoutRequest());
+  dispatch(authActions.logoutRequest());
 
   try {
     const response = await axios.post('/users/logout');
 
     token.unset();
-    dispatch(actions.logoutSuccess(response.data));
+    dispatch(authActions.logoutSuccess(response.data));
   } catch (error) {
-    dispatch(actions.logoutError(error.message));
+    dispatch(authActions.logoutError(error.message));
   }
 };
 
-export { register, login, logout };
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
+
+  try {
+    const response = await axios.get('/users/current');
+
+    dispatch(authActions.getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(authActions.getCurrentUserError(error.message));
+  }
+};
+
+export { register, login, logout, getCurrentUser };
