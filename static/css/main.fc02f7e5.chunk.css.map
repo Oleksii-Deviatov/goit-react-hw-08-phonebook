@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/NavigationBar/styles.module.css"],"names":[],"mappings":"AAIA,iDACE,WACF","file":"main.fc02f7e5.chunk.css","sourcesContent":[".barTitle {\n  flex-grow: 1;\n}\n\n.greetings {\n  flex-grow: 1;\n}\n"]}
