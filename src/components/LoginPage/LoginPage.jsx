@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TextField, Button, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as operations from '../../redux/auth/auth-operations';
+import { toast } from 'react-toastify';
+import { getError } from '../../redux/auth/auth-selectors';
 
 function LoginPage({ onLogin }) {
   const [inputEmain, setInputEmain] = useState('');
@@ -30,7 +32,6 @@ function LoginPage({ onLogin }) {
     <form onSubmit={submitHendler} autoComplete="off">
       <Box display="flex" flexDirection="column">
         <TextField
-          // id="standard-basic"
           label="E-Mail"
           value={inputEmain}
           onChange={inputNumberHendler}
@@ -38,7 +39,6 @@ function LoginPage({ onLogin }) {
           required
         />
         <TextField
-          // id="standard-basic"
           label="PassWord"
           value={inputPassword}
           onChange={inputPasswordHendler}
@@ -53,8 +53,6 @@ function LoginPage({ onLogin }) {
     </form>
   );
 }
-
-// const mapStateToProps = state => ({});
 
 const mapDispatchToProps = {
   onLogin: operations.login,

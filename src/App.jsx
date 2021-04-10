@@ -2,7 +2,7 @@ import { Typography, Container } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as authOperations from './redux/auth/auth-operations';
 import { useEffect } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom';
 import { React, lazy, Suspense } from 'react';
 import NavBar from './components/NavigationBar';
 import PrivateRoute from './components/PrivateRoute';

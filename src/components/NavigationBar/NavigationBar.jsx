@@ -13,8 +13,6 @@ import * as operations from '../../redux/auth/auth-operations';
 import styles from './styles.module.css';
 
 function NavigationBar({ isAuthenticated, getUsername, onLogout }) {
-  // const location = window.location.pathname;
-
   return (
     <>
       <AppBar position="static">

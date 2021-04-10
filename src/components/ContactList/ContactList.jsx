@@ -5,7 +5,7 @@ import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
 import * as operations from '../../redux/contacts/contacts-operations';
 import { useEffect } from 'react';
 
-function ContactList({ contacts, fetchContacts, getLoading }) {
+function ContactList({ contacts, fetchContacts }) {
   useEffect(() => {
     fetchContacts();
   }, []);

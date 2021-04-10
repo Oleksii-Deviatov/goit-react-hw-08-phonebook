@@ -2,6 +2,7 @@ import ContactForm from '../ContactForm';
 import Filter from '../Filter';
 import ContactList from '../ContactList';
 import { Container, Typography } from '@material-ui/core';
+import { ToastContainer } from 'react-toastify';
 
 function Home() {
   return (
@@ -16,6 +17,7 @@ function Home() {
 
         <ContactList />
       </Container>
+      <ToastContainer />
     </>
   );
 }

@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { getAllContacts } from '../../redux/contacts/contacts-selectors';
 import * as operations from '../../redux/contacts/contacts-operations';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function ContactForm({ contacts, addContact }) {
   const [inputName, setInputName] = useState('');
   const [inputNumber, setInputNumber] = useState('');
@@ -35,7 +38,7 @@ function ContactForm({ contacts, addContact }) {
         return;
 
       case checkExistContact():
-        alert(`${inputName} already exist`);
+        toast(`${inputName} already exist`);
         return;
 
       default:
