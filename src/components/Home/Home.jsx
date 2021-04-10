@@ -1,8 +1,7 @@
 import ContactForm from '../ContactForm';
 import Filter from '../Filter';
 import ContactList from '../ContactList';
-import { Container } from '@material-ui/core';
-import Title from '../Title';
+import { Container, Typography } from '@material-ui/core';
 
 function Home() {
   return (
@@ -10,8 +9,9 @@ function Home() {
       <Container maxWidth="xs">
         <ContactForm />
 
-        <Title title="Contacts" variant="h4" />
-
+        <Typography align="center" variant="h4">
+          Contacts
+        </Typography>
         <Filter />
 
         <ContactList />

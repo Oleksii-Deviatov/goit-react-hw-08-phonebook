@@ -1,5 +1,6 @@
-.spinner {
-  top: 0px;
-  left: 50%;
-  transform: translateX(-50%);
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 }

@@ -1,11 +1,10 @@
-import { Container } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as authOperations from './redux/auth/auth-operations';
 import { useEffect } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { React, lazy, Suspense } from 'react';
 import NavBar from './components/NavigationBar';
-import Title from './components/Title';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
@@ -35,9 +34,19 @@ function App({ onGetCurrentUser }) {
       <Container maxWidth="xs">
         <Suspense fallback={null}>
           <NavBar></NavBar>
-          <Title title="Phonebook" variant="h2" />
+
+          <Typography align="center" variant="h2">
+            Phonebook
+          </Typography>
+
           <Switch>
-            <Route exact path="/" component={StartPage} />
+            <PublicRoute
+              exact
+              path="/"
+              restricted
+              redirectTo="/home"
+              component={StartPage}
+            />
 
             <PublicRoute
               path="/register"
