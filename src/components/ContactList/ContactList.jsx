@@ -2,8 +2,8 @@ import Contact from '../Contact';
 import { List } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
-import * as operations from '../../redux/contacts/contacts-operations';
 import { useEffect } from 'react';
+import * as operations from '../../redux/contacts/contacts-operations';
 
 function ContactList({ contacts, fetchContacts }) {
   useEffect(() => {

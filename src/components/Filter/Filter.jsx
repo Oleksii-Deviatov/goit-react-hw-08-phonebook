@@ -12,7 +12,6 @@ function Filter({ onChange, value }) {
     <form autoComplete="off">
       <Box display="flex" flexDirection="column">
         <TextField
-          // id="standard-basic"
           label="find contact by name"
           value={value}
           onChange={inputFilterHendler}

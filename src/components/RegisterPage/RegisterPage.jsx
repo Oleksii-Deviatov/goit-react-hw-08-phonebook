@@ -37,7 +37,6 @@ function RegisterPage({ onRegister }) {
       <form onSubmit={submitHendler} autoComplete="off">
         <Box display="flex" flexDirection="column">
           <TextField
-            // id="standard-basic"
             label="Name"
             value={inputName}
             onChange={inputNameHandler}
@@ -45,7 +44,6 @@ function RegisterPage({ onRegister }) {
             required
           />
           <TextField
-            // id="standard-basic"
             label="E-Mail"
             value={inputEmain}
             onChange={inputNumberHendler}
@@ -53,7 +51,6 @@ function RegisterPage({ onRegister }) {
             required
           />
           <TextField
-            // id="standard-basic"
             label="PassWord"
             value={inputPassword}
             onChange={inputPasswordHendler}

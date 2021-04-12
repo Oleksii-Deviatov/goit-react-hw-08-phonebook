@@ -1,7 +1,6 @@
 import bookImg from './book.png';
 import styles from './styles.module.css';
 import { Typography, Container } from '@material-ui/core';
-// import styles from './styles.module.css';
 
 function StartPage() {
   return (

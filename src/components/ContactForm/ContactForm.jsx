@@ -3,7 +3,6 @@ import { TextField, Button, Box } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { getAllContacts } from '../../redux/contacts/contacts-selectors';
 import * as operations from '../../redux/contacts/contacts-operations';
-
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

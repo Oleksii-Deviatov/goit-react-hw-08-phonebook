@@ -25,6 +25,7 @@ function Home({ isLoading }) {
 
         <ContactList />
       </Container>
+
       <ToastContainer
         position="top-right"
         autoClose={2000}
