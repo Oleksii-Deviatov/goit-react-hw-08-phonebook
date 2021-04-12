@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, Box, Container } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as operations from '../../redux/auth/auth-operations';
 
@@ -33,38 +33,40 @@ function RegisterPage({ onRegister }) {
   }
 
   return (
-    <form onSubmit={submitHendler} autoComplete="off">
-      <Box display="flex" flexDirection="column">
-        <TextField
-          // id="standard-basic"
-          label="Name"
-          value={inputName}
-          onChange={inputNameHandler}
-          margin="dense"
-          required
-        />
-        <TextField
-          // id="standard-basic"
-          label="E-Mail"
-          value={inputEmain}
-          onChange={inputNumberHendler}
-          margin="dense"
-          required
-        />
-        <TextField
-          // id="standard-basic"
-          label="PassWord"
-          value={inputPassword}
-          onChange={inputPasswordHendler}
-          margin="dense"
-          type="password"
-          required
-        />
-        <Button variant="outlined" type="submit" color="primary">
-          Register
-        </Button>
-      </Box>
-    </form>
+    <Container maxWidth="xs">
+      <form onSubmit={submitHendler} autoComplete="off">
+        <Box display="flex" flexDirection="column">
+          <TextField
+            // id="standard-basic"
+            label="Name"
+            value={inputName}
+            onChange={inputNameHandler}
+            margin="dense"
+            required
+          />
+          <TextField
+            // id="standard-basic"
+            label="E-Mail"
+            value={inputEmain}
+            onChange={inputNumberHendler}
+            margin="dense"
+            required
+          />
+          <TextField
+            // id="standard-basic"
+            label="PassWord"
+            value={inputPassword}
+            onChange={inputPasswordHendler}
+            margin="dense"
+            type="password"
+            required
+          />
+          <Button variant="outlined" type="submit" color="primary">
+            Register
+          </Button>
+        </Box>
+      </form>
+    </Container>
   );
 }
 
