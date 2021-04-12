@@ -1,5 +1,6 @@
 .spinner {
-  top: 0px;
+  position: absolute;
+  top: 23%;
   left: 50%;
   transform: translateX(-50%);
 }

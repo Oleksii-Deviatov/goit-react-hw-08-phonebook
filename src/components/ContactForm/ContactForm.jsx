@@ -38,7 +38,7 @@ function ContactForm({ contacts, addContact }) {
         return;
 
       case checkExistContact():
-        toast(`${inputName} already exist`);
+        toast.error(`${inputName} already exist`);
         return;
 
       default:

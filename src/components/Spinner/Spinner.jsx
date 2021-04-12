@@ -8,8 +8,8 @@ function Spinner() {
       className={styles.spinner}
       type="Puff"
       color="#00BFFF"
-      height={70}
-      width={70}
+      height={100}
+      width={100}
       // timeout={3000}
     />
   );

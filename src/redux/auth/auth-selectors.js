@@ -2,4 +2,6 @@ const getIsAuthenticated = state => state.auth.isAuthenticated;
 
 const getUsername = state => state.auth.user.name;
 
-export { getIsAuthenticated, getUsername };
+const getError = state => state.auth.error;
+
+export { getIsAuthenticated, getUsername, getError };

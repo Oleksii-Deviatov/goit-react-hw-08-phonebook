@@ -24,7 +24,7 @@ function NavigationBar({ isAuthenticated, getUsername, onLogout }) {
               color="inherit"
               className={styles.barTitle}
             >
-              to start
+              Phonebook
             </Button>
           )}
 

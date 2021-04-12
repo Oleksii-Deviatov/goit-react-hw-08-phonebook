@@ -1,12 +1,16 @@
-import { Typography, Container } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { connect } from 'react-redux';
 import * as authOperations from './redux/auth/auth-operations';
 import { useEffect } from 'react';
 import { Redirect, Switch } from 'react-router-dom';
 import { React, lazy, Suspense } from 'react';
-import NavBar from './components/NavigationBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import Spinner from './components/Spinner';
+
+const NavBar = lazy(() =>
+  import('./components/NavigationBar' /* webpackChunkName: "NavBar" */),
+);
 
 const StartPage = lazy(() =>
   import('./components/StartPage' /* webpackChunkName: "StartPage" */),
@@ -32,12 +36,8 @@ function App({ onGetCurrentUser }) {
   return (
     <>
       <Container maxWidth="xs">
-        <Suspense fallback={null}>
-          <NavBar></NavBar>
-
-          <Typography align="center" variant="h2">
-            Phonebook
-          </Typography>
+        <Suspense fallback={<Spinner />}>
+          <NavBar />
 
           <Switch>
             <PublicRoute
