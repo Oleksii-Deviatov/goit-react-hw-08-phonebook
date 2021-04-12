@@ -8,6 +8,8 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Spinner from './components/Spinner';
 
+import { getStatusLoadingUser } from './redux/auth/auth-selectors';
+
 const NavBar = lazy(() =>
   import('./components/NavigationBar' /* webpackChunkName: "NavBar" */),
 );
@@ -28,7 +30,7 @@ const LoginPage = lazy(() =>
   import('./components/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
 
-function App({ onGetCurrentUser }) {
+function App({ onGetCurrentUser, isLoadingUser }) {
   useEffect(() => {
     onGetCurrentUser();
   }, []);
@@ -37,39 +39,44 @@ function App({ onGetCurrentUser }) {
     <>
       <Container maxWidth="xs">
         <Suspense fallback={<Spinner />}>
-          <NavBar />
+          {isLoadingUser || (
+            <>
+              <NavBar />
+              <Switch>
+                {
+                  <PublicRoute
+                    exact
+                    path="/"
+                    restricted
+                    redirectTo="/home"
+                    component={StartPage}
+                  />
+                }
 
-          <Switch>
-            <PublicRoute
-              exact
-              path="/"
-              restricted
-              redirectTo="/home"
-              component={StartPage}
-            />
+                <PublicRoute
+                  path="/register"
+                  restricted
+                  redirectTo="/home"
+                  component={RegisterPage}
+                />
 
-            <PublicRoute
-              path="/register"
-              restricted
-              redirectTo="/home"
-              component={RegisterPage}
-            />
+                <PublicRoute
+                  path="/login"
+                  restricted
+                  redirectTo="/home"
+                  component={LoginPage}
+                />
 
-            <PublicRoute
-              path="/login"
-              restricted
-              redirectTo="/home"
-              component={LoginPage}
-            />
+                <PrivateRoute
+                  path="/home"
+                  redirectTo="/login"
+                  component={HomePage}
+                />
 
-            <PrivateRoute
-              path="/home"
-              redirectTo="/login"
-              component={HomePage}
-            />
-
-            <Redirect to="/" />
-          </Switch>
+                <Redirect to="/" />
+              </Switch>
+            </>
+          )}
         </Suspense>
       </Container>
     </>
@@ -80,4 +87,8 @@ const mapDispatchToProps = {
   onGetCurrentUser: authOperations.getCurrentUser,
 };
 
-export default connect(null, mapDispatchToProps)(App);
+const mapStateToProps = state => ({
+  isLoadingUser: getStatusLoadingUser(state),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
