@@ -43,15 +43,13 @@ function App({ onGetCurrentUser, isLoadingUser }) {
             <>
               <NavBar />
               <Switch>
-                {
-                  <PublicRoute
-                    exact
-                    path="/"
-                    restricted
-                    redirectTo="/home"
-                    component={StartPage}
-                  />
-                }
+                <PublicRoute
+                  exact
+                  path="/"
+                  restricted
+                  redirectTo="/home"
+                  component={StartPage}
+                />
 
                 <PublicRoute
                   path="/register"
