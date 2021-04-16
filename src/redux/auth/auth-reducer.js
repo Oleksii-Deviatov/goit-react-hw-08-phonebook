@@ -36,7 +36,7 @@ const isAuthenticated = createReducer(false, {
   [authActions.logoutSuccess]: () => false,
 });
 
-const isLoadingUser = createReducer(false, {
+const isLoadingUser = createReducer(true, {
   [authActions.registrationSuccess]: () => false,
   [authActions.registrationError]: () => false,
   [authActions.registrationRequest]: () => true,
