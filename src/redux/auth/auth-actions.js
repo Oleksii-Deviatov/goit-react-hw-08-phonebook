@@ -16,6 +16,8 @@ const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+const noToken = createAction('auth/noToken');
+
 export {
   registrationRequest,
   registrationSuccess,
@@ -29,4 +31,5 @@ export {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  noToken,
 };

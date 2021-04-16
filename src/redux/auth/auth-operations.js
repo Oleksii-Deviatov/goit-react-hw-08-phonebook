@@ -57,6 +57,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   } = getState();
 
   if (!persistedToken) {
+    dispatch(authActions.noToken());
     return;
   }
 

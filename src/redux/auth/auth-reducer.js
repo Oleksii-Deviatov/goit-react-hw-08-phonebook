@@ -37,6 +37,8 @@ const isAuthenticated = createReducer(false, {
 });
 
 const isLoadingUser = createReducer(true, {
+  [authActions.noToken]: () => false,
+
   [authActions.registrationSuccess]: () => false,
   [authActions.registrationError]: () => false,
   [authActions.registrationRequest]: () => true,
